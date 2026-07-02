@@ -3,6 +3,7 @@
 Aplicación web sencilla para la asignatura **Proyecto de Ingeniería III**. Incluye:
 
 - Frontend en Angular
+- Aplicación móvil en Ionic + Angular
 - Backend en Spring Boot
 - Base de datos PostgreSQL
 - Autenticación JWT
@@ -14,6 +15,7 @@ Aplicación web sencilla para la asignatura **Proyecto de Ingeniería III**. Inc
 task-manager-secure/
 ├── backend/
 ├── frontend/
+├── mobile/
 ├── docker-compose.yml
 └── README.md
 ```
@@ -26,6 +28,7 @@ task-manager-secure/
 - Endpoints públicos para login y registro
 - Endpoints protegidos con `Authorization: Bearer <token>`
 - Gestión completa de tareas del usuario autenticado
+- Cliente móvil reutilizando el mismo backend y los mismos endpoints
 - Restricción para que cada usuario solo vea y modifique sus propias tareas
 - Entidades `User`, `Task`, `Notification` y `AuditLog`
 - Validaciones básicas y manejo de errores sencillo
@@ -120,7 +123,49 @@ Si `APP_SEED_ENABLED=true`, el backend crea un usuario demo y una tarea inicial 
 - [`backend/src/main/resources/application.properties`](/Users/pablo/Documents/app-gestion-tareas/backend/src/main/resources/application.properties): configuración del backend
 - [`frontend/package.json`](/Users/pablo/Documents/app-gestion-tareas/frontend/package.json): dependencias Angular
 - [`frontend/src/app`](/Users/pablo/Documents/app-gestion-tareas/frontend/src/app): componentes, rutas, servicios e interceptor
+- [`mobile/package.json`](/Users/pablo/Documents/app-gestion-tareas/mobile/package.json): dependencias del cliente móvil Ionic
+- [`mobile/src/app`](/Users/pablo/Documents/app-gestion-tareas/mobile/src/app): pantallas, servicios, guardas e interceptor del móvil
 - [`docker-compose.yml`](/Users/pablo/Documents/app-gestion-tareas/docker-compose.yml): orquestación de frontend, backend y PostgreSQL
+
+## Aplicación móvil
+
+Se ha añadido un cliente móvil en [`mobile/`](/Users/pablo/Documents/app-gestion-tareas/mobile) usando **Ionic + Angular** y el mismo backend JWT del proyecto principal.
+
+Pantallas disponibles:
+
+- Login
+- Registro
+- Listado de tareas
+- Crear tarea
+- Editar tarea
+- Eliminar tarea
+- Marcar tarea como completada
+
+### Ejecución del móvil
+
+Desde la carpeta `mobile`:
+
+```bash
+npm install
+npm run start
+```
+
+Para abrirlo en Android con Capacitor:
+
+```bash
+npm install
+npm run sync
+npm run android
+```
+
+### URL del backend en el móvil
+
+El cliente móvil queda preparado así:
+
+- En `ionic serve`: `http://localhost:8081/api`
+- En emulador Android: `http://10.0.2.2:8081/api`
+
+Si pruebas en un dispositivo físico, cambia la base URL en [`mobile/src/environments/environment.ts`](/Users/pablo/Documents/app-gestion-tareas/mobile/src/environments/environment.ts) por la IP local de tu máquina.
 
 ## Capturas recomendadas para la memoria
 

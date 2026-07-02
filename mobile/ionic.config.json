@@ -1,0 +1,7 @@
+{
+  "name": "task-manager-secure-mobile",
+  "type": "angular",
+  "integrations": {
+    "capacitor": {}
+  }
+}
