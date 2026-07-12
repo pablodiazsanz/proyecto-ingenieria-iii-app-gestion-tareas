@@ -32,7 +32,7 @@ task-manager-secure/
 - Restricción para que cada usuario solo vea y modifique sus propias tareas
 - Entidades `User`, `Task`, `Notification` y `AuditLog`
 - Validaciones básicas y manejo de errores sencillo
-- CORS configurado para `http://localhost:4201` y `http://localhost:4200`
+- CORS configurado para `http://localhost:4201`, `http://localhost:4200`, `http://localhost:8100` y `http://127.0.0.1:8100`
 - Datos iniciales opcionales
 
 ## Arquitectura del backend
@@ -62,7 +62,7 @@ Variables principales:
 - `BACKEND_HOST_PORT=8081`
 - `FRONTEND_HOST_PORT=4201`
 - `APP_JWT_SECRET=<clave base64 para JWT>`
-- `APP_CORS_ALLOWED_ORIGIN=http://localhost:4201,http://localhost:4200`
+- `APP_CORS_ALLOWED_ORIGIN=http://localhost:4201,http://localhost:4200,http://localhost:8100,http://127.0.0.1:8100`
 - `APP_SEED_ENABLED=true`
 
 ## Ejecución
